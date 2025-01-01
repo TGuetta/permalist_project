@@ -6,15 +6,19 @@
     </h1>
   </div>
   <div class="box">
+    <!-- we get the listItems from the controller (which is passed from the database) and loop through each item to display it on the page. -->
     <% for(let item of listItems){%>
       <div class="item">
         <form action="/delete" method="post">
           <input type="checkbox" onchange="this.form.submit()" name="deleteItemId" value="<%= item.id %>">
         </form>
 
+
         <p id="title<%=item.id%>">
+          <!-- this is the title of the item that is displayed on the page. taken from index.js file where we have passed the listItems to the view. -->
           <%= item.title %>
         </p>
+
 
         <form class="edit" action="/edit" method="post">
           <input type="hidden" name="updatedItemId" value="<%= item.id %>">
