@@ -78,23 +78,3 @@ app.post("/delete", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-
-// steps to solve the exercise:
-// 1. create a new database in pgaadmin called permalist with a table called items
-// 2. insert to the items table some test data (id, title) (you can see it in line 10)
-// 3. we want to be able to read the data from the database and display it in the browser. we do it by using the get method and the query method in line 18. and send the data to the index.ejs file.
-// 4. before we can access the data from the database we need to install the pg package by running the command npm install pg
-// 5. we need to import the pg package in line 2
-// 6. we need to create a new client in line 10
-// 7. we need to connect to the database in line 11
-// 8. we need to use the query method in line 28 to get the data from the database
-// 9. we need to store the data in the items array in line 29
-// 10. we need to send the data to the index.ejs file in line 31
-// 11. we want to be able to add new items to the database. we do it by using the post method and the query method in line 42
-// 12. we need to install the body-parser package by running the command npm install body-parser
-// 13. we need to import the body-parser package in line 2
-// 14. we need to use the body-parser package in line 12
-// 15. we need to get the new item from the form in line 43
-// 16. we need to insert the new item to the items table in line 47
-// 17. we need to redirect the user to the home page in line 48
-// 18. we want to be able to edit items in the database. we do it by using the post method and the query method in line 55
