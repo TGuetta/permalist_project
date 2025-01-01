@@ -64,7 +64,16 @@ app.post("/edit", async (req, res) => {
   }
 });
 
-app.post("/delete", (req, res) => {});
+app.post("/delete", async (req, res) => {
+  // we are deleting an item from the items table
+  const id = req.body.deleteItemId; // we are getting the id of the item to delete from the form
+  try {
+    await db.query("DELETE FROM items WHERE id = $1", [id]); // we are deleting the item from the items table
+    res.redirect("/"); // we are redirecting the user to the home page
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
