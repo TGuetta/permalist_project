@@ -51,7 +51,18 @@ app.post("/add", async (req, res) => {
   }
 });
 
-app.post("/edit", (req, res) => {});
+app.post("/edit", async (req, res) => {
+  // we are editing an item in the items table
+  const item = req.body.updatedItemTitle; // we are getting the updated item from the form
+  const id = req.body.updatedItemId; // we are getting the id of the updated item from the form
+
+  try {
+    await db.query("UPDATE items SET title = ($1) WHERE id = $2", [item, id]); // we are updating the item in the items table
+    res.redirect("/"); // we are redirecting the user to the home page
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 app.post("/delete", (req, res) => {});
 
@@ -74,3 +85,7 @@ app.listen(port, () => {
 // 12. we need to install the body-parser package by running the command npm install body-parser
 // 13. we need to import the body-parser package in line 2
 // 14. we need to use the body-parser package in line 12
+// 15. we need to get the new item from the form in line 43
+// 16. we need to insert the new item to the items table in line 47
+// 17. we need to redirect the user to the home page in line 48
+// 18. we want to be able to edit items in the database. we do it by using the post method and the query method in line 55
